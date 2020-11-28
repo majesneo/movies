@@ -4,8 +4,10 @@ export interface Movies {
   total_results: number;
   dates: Dates;
   total_pages: number;
+
 }
 export interface ResultsEntity {
+  name:string
   popularity: number;
   vote_count: number;
   video: boolean;

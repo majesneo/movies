@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: AppComponent
+  },
+  {
+    path: 'movie/:id',
+    component: AppComponent
   }
 ];
 

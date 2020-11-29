@@ -49,12 +49,8 @@ export class MovieService {
     });
   }
 
-  getTopRated(): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.top_rated}`, {
-      params: {
-        api_key: this.API_KEY
-      }
-    });
+  getTopRated(page: number): Observable<Movies> {
+    return this.http.get<Movies>(`${this.URL}${endpoint.top_rated}?api_key=${this.API_KEY}&page=${page.toString()}`)
   }
 
   getTrending(): Observable<Movies> {
@@ -65,20 +61,16 @@ export class MovieService {
     });
   }
 
-  searchMovie(str: string): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.search}&query='${str}'`, {
+  searchMovie(searchStr: string) {
+    return this.http.get('https://api.themoviedb.org/3/search/movie?&query=' + searchStr + '&sort_by=popularity.desc&api_key=' + this.API_KEY);
+  }
+
+
+  getMovie(id: string) {
+    return this.http.get(`${this.URL}${id}`, {
       params: {
         api_key: this.API_KEY
       }
     });
   }
-
-
-  // getMovie(id: string) {
-  //   return this.http.get(`${this.URL}${id}`, {
-  //     params: {
-  //       api_key: this.API_KEY
-  //     }
-  //   });
-  // }
 }

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Movies} from './models/movies';
+import {Movies, ResultsEntity} from './models/movies';
 import {MovieService} from './services/movie.service';
 
 @Component({
@@ -34,9 +34,10 @@ export class AppComponent implements OnInit, OnDestroy {
   };
   // @ts-ignore
   searchStr = '';
-  // tslint:disable-next-line:ban-types
-  searchRes: Array<Object> | undefined;
 
+  // @ts-ignore
+  searchRes: any;
+  page: number = 1;
 
   ngOnInit(): void {
 
@@ -47,7 +48,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.popular = data;
 
     }));
-    this.subs.push(this.movieService.getTopRated().subscribe(data => {
+    this.subs.push(this.movieService.getTopRated(this.page).subscribe(data => {
+      console.log(data);
       this.topRated = data;
 
     }));
@@ -56,8 +58,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     }));
     this.subs.push(this.movieService.getTrending().subscribe(data => {
+
       this.trending = data;
-      console.log(data);
+
       // @ts-ignore
       this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.trending.results[0].backdrop_path;
     }));
@@ -67,8 +70,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subs.map(s => s.unsubscribe());
   }
 
+  // tslint:disable-next-line:typedef
   searchMovies() {
     this.movieService.searchMovie(this.searchStr).subscribe(res => {
+      // @ts-ignore
+      console.log(res.results);
+      // @ts-ignore
       this.searchRes = res.results;
     });
   }

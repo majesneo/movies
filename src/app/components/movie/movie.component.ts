@@ -8,7 +8,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./movie.component.sass']
 })
 export class MovieComponent implements OnInit {
-  // movie: Object;
+  // @ts-ignore
+  movie: Object;
 
   constructor(
     private movieService: MovieService,
@@ -16,17 +17,17 @@ export class MovieComponent implements OnInit {
   ) {
   }
 
+
+
   ngOnInit(): void {
+    this.router.params.subscribe((params) => {
+      const id = params['id'];
+      this.movieService.getMovie(id).subscribe(movie => {
+        console.log(movie);
+        this.movie = movie;
+      });
+    });
   }
 
-  // ngOnInit(): void {
-  //   this.router.params.subscribe((params) => {
-  //     const id = params['id'];
-  //     this.movieService.getMovie(id).subscribe(movie => {
-  //       this.movie = movie;
-  //     });
-  //   });
-  // }
-  //
 
 }

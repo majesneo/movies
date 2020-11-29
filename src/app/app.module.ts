@@ -11,6 +11,8 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {FormsModule} from '@angular/forms';
 import {MovieComponent} from './components/movie/movie.component';
+import {SearchSliderComponent} from './components/search-slider/search-slider.component';
+import {MainComponent} from './components/main/main.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import {MovieComponent} from './components/movie/movie.component';
     AppComponent,
     SliderComponent,
     MovieComponent,
+    SearchSliderComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

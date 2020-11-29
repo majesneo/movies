@@ -4,7 +4,7 @@
          [ngStyle]="{
       'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('+headerBGUrl+')'
       }">
-      <h2>{{trending.results[0].name}}</h2>
+<!--            <h2>{{trending.results[0].name}}</h2>-->
       <div class="header__buttons">
 
         <button class="play-button">
@@ -61,10 +61,15 @@
   </div>
 
   <div class="body" style="margin-top: 30rem;">
+    <app-search-slider *ngIf="searchRes" [movies]="searchRes" title="Search results"
+                       [sliderConfig]="sliderConfig"></app-search-slider>
     <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
-    <app-slider title="Top Rated" [movies]="topRated" [sliderConfig]="sliderConfig"></app-slider>
-    <app-slider title="Now Playing" [movies]="nowPlaying" [sliderConfig]="sliderConfig"></app-slider>
-    <app-slider title="Popular" [movies]="popular" [sliderConfig]="sliderConfig"></app-slider>
+    <!--    <app-slider title="Top Rated" [movies]="topRated" [sliderConfig]="sliderConfig"></app-slider>-->
+    <!--    <app-slider title="Now Playing" [movies]="nowPlaying" [sliderConfig]="sliderConfig"></app-slider>-->
+    <!--    <app-slider title="Popular" [movies]="popular" [sliderConfig]="sliderConfig"></app-slider>-->
   </div>
+
+  <app-main  [movies]="topRated" title="Top Rated"></app-main>
+
 
 </div>

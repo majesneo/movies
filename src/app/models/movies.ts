@@ -4,10 +4,11 @@ export interface Movies {
   total_results: number;
   dates: Dates;
   total_pages: number;
-
+  searchRes: string;
 }
+
 export interface ResultsEntity {
-  name:string
+  name: string;
   popularity: number;
   vote_count: number;
   video: boolean;
@@ -23,6 +24,7 @@ export interface ResultsEntity {
   overview: string;
   release_date: string;
 }
+
 export interface Dates {
   maximum: string;
   minimum: string;

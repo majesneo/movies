@@ -1,0 +1,43 @@
+<div class="row" *ngIf="movie">
+
+  <img style="max-height:550px;" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" class="thumbnail">
+
+
+  <div class="descr-wrap">
+    <h2 class="move-title">{{movie.title}}
+
+      <small class="label label-warning">
+        {{movie.vote_average}}
+        <i class="glyphicon glyphicon-star"></i>
+      </small>
+
+    </h2>
+    <a routerLink="" *ngFor="let genre of movie.genres" class="label label-info m-r-md">
+      {{genre.name}}
+    </a>
+    <p>
+      <a *ngIf="movie.homepage" href="{{movie.homepage}}" class="btn btn-info btn-block" target="_blank">Visit Movies
+        Website</a>
+    </p>
+    <p>{{movie.tagline}}</p>
+
+
+    <h3>Overview</h3>
+    <p>
+      {{movie.overview}}
+    </p>
+    <div class="is-flex" *ngIf="cast && cast.length > 0">
+      <div *ngFor="let actor of cast">
+        <div class="thumbnail">
+          <img style="max-height:250px;" src="https://image.tmdb.org/t/p/w500/{{actor.profile_path}}" alt="">
+          <div class="caption">
+            <h6 class="text-center"><a routerLink="/actor/{{actor.id}}">{{actor.name}}</a></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-icon (click)="modal =true">close</mat-icon>
+</div>
+
+

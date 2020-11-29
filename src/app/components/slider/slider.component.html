@@ -4,9 +4,12 @@
     <div class="thumbnails">
       <ngx-slick-carousel [config]="sliderConfig" class="carousel">
         <div class="slick-item" *ngFor="let movie of movies.results" ngxSlickItem>
-          <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}"  alt="{{movie.title}}">
+          <a href="#" routerLink="/movie/{{movie.id}}">
+            <img src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}" alt="{{movie.title}}">
+          </a>
         </div>
       </ngx-slick-carousel>
     </div>
   </div>
 </div>
+

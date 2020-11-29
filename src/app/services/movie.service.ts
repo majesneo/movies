@@ -50,7 +50,7 @@ export class MovieService {
   }
 
   getTopRated(page: number): Observable<Movies> {
-    return this.http.get<Movies>(`${this.URL}${endpoint.top_rated}?api_key=${this.API_KEY}&page=${page.toString()}`)
+    return this.http.get<Movies>(`${this.URL}${endpoint.top_rated}?api_key=${this.API_KEY}&page=${page.toString()}`);
   }
 
   getTrending(): Observable<Movies> {
@@ -67,10 +67,15 @@ export class MovieService {
 
 
   getMovie(id: string) {
-    return this.http.get(`${this.URL}${id}`, {
+    console.log('getMovie');
+    return this.http.get(`${this.URL}/movie/${id}`, {
       params: {
         api_key: this.API_KEY
       }
     });
+  }
+
+  getMovieCredits(id: string) {
+    return this.http.get('https://api.themoviedb.org/3/movie/' + id + '/credits?&api_key=' + this.API_KEY);
   }
 }

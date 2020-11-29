@@ -1,7 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Movies, ResultsEntity} from './models/movies';
 import {MovieService} from './services/movie.service';
+import {MovieComponent} from './components/movie/movie.component';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,20 @@ import {MovieService} from './services/movie.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(private movieService: MovieService) {
+
+  constructor(private movieService: MovieService, public movieComponent: MovieComponent) {
+
   }
 
+  // @ts-ignore
+
+
   subs: Subscription[] = [];
+
+  trending: Movies[] = [];
+
   // @ts-ignore
-  trending: Movies;
-  // @ts-ignore
-  popular: Movies;
+  popular: Movies = [];
   // @ts-ignore
   topRated: Movies;
   // @ts-ignore
@@ -36,8 +43,12 @@ export class AppComponent implements OnInit, OnDestroy {
   searchStr = '';
 
   // @ts-ignore
+  id: boolean;
+  // @ts-ignore
   searchRes: any;
   page: number = 1;
+
+  @Input() modal: boolean;
 
   ngOnInit(): void {
 
@@ -48,17 +59,18 @@ export class AppComponent implements OnInit, OnDestroy {
       this.popular = data;
 
     }));
+    this.subs.push();
     this.subs.push(this.movieService.getTopRated(this.page).subscribe(data => {
-      console.log(data);
       this.topRated = data;
-
     }));
+
     this.subs.push(this.movieService.getNowPlaying().subscribe(data => {
       this.nowPlaying = data;
 
     }));
     this.subs.push(this.movieService.getTrending().subscribe(data => {
 
+      // @ts-ignore
       this.trending = data;
 
       // @ts-ignore
@@ -74,10 +86,17 @@ export class AppComponent implements OnInit, OnDestroy {
   searchMovies() {
     this.movieService.searchMovie(this.searchStr).subscribe(res => {
       // @ts-ignore
-      console.log(res.results);
+
       // @ts-ignore
       this.searchRes = res.results;
     });
   }
 
+  moreMovies() {
+    this.page++;
+    console.log(this.page);
+    this.movieService.getTopRated(this.page).subscribe(data => {
+      this.topRated = data;
+    });
+  }
 }

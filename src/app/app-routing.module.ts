@@ -1,16 +1,19 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {AppComponent} from './app.component';
+import {RouterModule, Routes} from '@angular/router';
+import {MovieComponent} from './components/movie/movie.component';
+
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AppComponent
-  },
+
   {
     path: 'movie/:id',
-    component: AppComponent
+    component: MovieComponent
+
+  },
+  {
+    path: '**', redirectTo: ''
   }
+
 ];
 
 @NgModule({

@@ -1,24 +1,21 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+/*
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Movies} from '../../models/movies';
 import {MovieService} from '../../services/movie.service';
 import {ActivatedRoute} from '@angular/router';
-import {Movies} from '../../models/movies';
-import {AppComponent} from '../../app.component';
 
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.sass']
+  selector: 'app-modal-movie',
+  templateUrl: './modal-movie.component.html',
+  styleUrls: ['./modal-movie.component.sass']
 })
-export class MovieComponent implements OnInit {
-  // @ts-ignore
-  movie: any;
-  // @ts-ignore
-  cast: any;
-
- @Output() modal: boolean;
+export class ModalMovieComponent implements OnInit {
+  @Output() close = new EventEmitter;
 
   // @ts-ignore
-  @Input() id: boolean = true;
+  movie: Movies;
+  // @ts-ignore
+  cast: Array<Object>;
 
 
   constructor(
@@ -30,19 +27,17 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe((params) => {
-      const id = params['id'];
-
+      const id = params['238'];
+      console.log(id);
       this.movieService.getMovie(id).subscribe(movie => {
         console.log(movie);
-        // @ts-ignore
-
         this.movie = movie;
 
       });
     });
 
     this.router.params.subscribe((params) => {
-      const id = params['id'];
+      const id = params['238'];
       this.movieService.getMovieCredits(id).subscribe(res => {
         // @ts-ignore
         res.cast = res.cast.filter((item) => {
@@ -51,10 +46,8 @@ export class MovieComponent implements OnInit {
 
         // @ts-ignore
         this.cast = res.cast.slice(0, 4);
-
       });
     });
-
   }
-
 }
+*/

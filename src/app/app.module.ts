@@ -21,7 +21,7 @@ import {MainComponent} from './components/main/main.component';
     SliderComponent,
     MovieComponent,
     SearchSliderComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,7 @@ import {MainComponent} from './components/main/main.component';
     SlickCarouselModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [MovieComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

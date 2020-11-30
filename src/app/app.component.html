@@ -4,10 +4,11 @@
       <div *ngFor="let favorite of favorites">
         <img class="mdc-image-list__image" alt="{{favorite.title}}"
              src="https://image.tmdb.org/t/p/w200{{favorite.poster_path}}">
+        <button style="display: flex; margin: 0 auto"  class="mdc-image-list__btn" (click)="this.mainComponent.delFavorites(favorite)"><mat-icon>favorite_border</mat-icon></button>
       </div>
     </mat-sidenav>
     <mat-sidenav-content>
-      <button class="btn-sidenav" (click)="opened=!opened; fov()">Favorites</button>
+      <button class="btn-sidenav" (click)="opened=!opened; fov()"><mat-icon style="color: #DB202C">favorite</mat-icon></button>
     </mat-sidenav-content>
   </mat-sidenav-container>
   <div class="wrap">

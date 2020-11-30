@@ -37,8 +37,15 @@ export class MainComponent implements OnInit {
   }
 
   addFavorites(movie: ResultsEntity) {
+    for (let i = 0; i < this.favorites.length; i++) {
+      if (movie.id == this.favorites[i].id) {
+        return;
+      }
+    }
     // @ts-ignore
     this.favorites.push(movie);
+
+
     let favorites = [];
     if (localStorage.getItem('fov') === null) {
       favorites.push(movie);

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Movies} from '../../models/movies';
 import {MainComponent} from '../main/main.component';
 
 @Component({

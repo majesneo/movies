@@ -1,6 +1,6 @@
-import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Movies, ResultsEntity} from './models/movies';
+import {Movies} from './models/movies';
 import {MovieService} from './services/movie.service';
 import {MovieComponent} from './components/movie/movie.component';
 import {MainComponent} from './components/main/main.component';
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private movieService: MovieService,
               public movieComponent: MovieComponent,
-              public mainComponent: MainComponent
+              public mainComponent: MainComponent,
   ) {
 
   }
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
   opened = false;
 
   // @ts-ignore
-  favorites: Movies[];
+  favorites: Movies;
 
   ngOnInit(): void {
 
@@ -122,6 +122,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   fov() {
+    // @ts-ignore
     this.favorites = this.mainComponent.getFavorites();
     console.log(this.favorites);
   }

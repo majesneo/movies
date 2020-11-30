@@ -1,8 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {MovieService} from '../../services/movie.service';
 import {ActivatedRoute} from '@angular/router';
-import {Movies} from '../../models/movies';
-import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-movie',

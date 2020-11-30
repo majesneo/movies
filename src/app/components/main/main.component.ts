@@ -51,18 +51,15 @@ export class MainComponent implements OnInit {
       localStorage.setItem('fov', JSON.stringify(favorites));
     }
 
-
-    // @ts-ignore
-    this.favorites.push(movie);
-    console.log(this.favorites, 'Add');
   }
 
   delFavorites(movie: ResultsEntity) {
     for (let i = 0; i < this.favorites.length; i++) {
       // @ts-ignore
-      if (movie === this.favorites[i]) {
+      console.log(movie.id == this.favorites[i].id);
+      // @ts-ignore
+      if (movie.id == this.favorites[i].id) {
         this.favorites.splice(i, 1);
-        console.log(this.favorites, 'Del');
         localStorage.setItem('fov', JSON.stringify(this.favorites));
       }
     }

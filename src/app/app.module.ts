@@ -14,6 +14,13 @@ import {MovieComponent} from './components/movie/movie.component';
 import {SearchSliderComponent} from './components/search-slider/search-slider.component';
 import {MainComponent} from './components/main/main.component';
 
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { AngularMaterialModule } from './material.module';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,7 @@ import {MainComponent} from './components/main/main.component';
     MovieComponent,
     SearchSliderComponent,
     MainComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -32,8 +40,15 @@ import {MainComponent} from './components/main/main.component';
     MatBadgeModule,
     SlickCarouselModule,
     FormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    AngularMaterialModule,
+    MatButtonToggleModule
   ],
-  providers: [MovieComponent],
+  providers: [MovieComponent,MainComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

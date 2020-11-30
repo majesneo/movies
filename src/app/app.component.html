@@ -1,71 +1,88 @@
 <div class="container">
-  <div class="header">
-    <div class="header__banner"
-         [ngStyle]="{
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+      <div *ngFor="let favorite of favorites">
+        <img class="mdc-image-list__image" alt="{{favorite.title}}"
+             src="https://image.tmdb.org/t/p/w200{{favorite.poster_path}}">
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button class="btn-sidenav" (click)="opened=!opened">Favorites</button>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div class="wrap">
+    <div class="header">
+
+
+      <div class="header__banner"
+           [ngStyle]="{
       'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('+headerBGUrl+')'
       }">
-       <h2>{{trending.results[0].name}}</h2>
-      <div class="header__buttons">
+        <h2>{{trending.results[0].name}}</h2>
+        <div class="header__buttons">
 
-        <button class="play-button">
-          <mat-icon>arrow_right</mat-icon>
-          <span>Play</span>
-        </button>
+          <button class="play-button">
+            <mat-icon>arrow_right</mat-icon>
+            <span>Play</span>
+          </button>
 
-        <button class="more-button">
-          <mat-icon>info</mat-icon>
-          <span>More Info</span>
-        </button>
+          <button class="more-button">
+            <mat-icon>info</mat-icon>
+            <span>More Info</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="header__main">
+
+        <div class="header__left">
+          <a routerLink="/">
+            <img src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="logo">
+          </a>
+
+          <ul>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">TV Shows</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">My List</a></li>
+          </ul>
+        </div>
+
+        <div class="header__right">
+          <form (submit)="searchMovies()">
+            <div class="row">
+              <input type="text" placeholder="Search" class="form-control" [(ngModel)]="searchStr"
+                     name="searchStr">
+              <button type="submit">
+                <mat-icon>search</mat-icon>
+              </button>
+            </div>
+          </form>
+          <ul>
+            <li><a href="#">
+              <mat-icon>card_giftcard</mat-icon>
+            </a></li>
+            <li><a href="#">
+              <mat-icon>notifications</mat-icon>
+            </a></li>
+            <li>
+              <img src="https://www.themoviedb.org/t/p/w50_and_h50_face/x066gtDIH6yYPHBjsGvkBZg74eP.jpg" alt="avatar">
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
+    <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
 
-    <div class="header__main">
-      <div class="header__left">
-        <a routerLink="/">
-          <img src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="logo">
-        </a>
-        <ul>
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">TV Shows</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">Latest</a></li>
-          <li><a href="#">My List</a></li>
-        </ul>
-      </div>
+    <router-outlet></router-outlet>
+    <app-main (click)="addFavor()" [favorites]="favorites" [movies]="topRated" title="Top Rated"></app-main>
+    <button class="main__button" (click)="moreMovies()">
+      <mat-icon>expand_more</mat-icon>
+    </button>
 
-      <div class="header__right">
-        <form (submit)="searchMovies()">
-          <div class="row">
-            <input type="text" placeholder="Search" class="form-control" [(ngModel)]="searchStr"
-                   name="searchStr">
-            <button type="submit">
-              <mat-icon>search</mat-icon>
-            </button>
-          </div>
-        </form>
-        <ul>
-          <li><a href="#">
-            <mat-icon>card_giftcard</mat-icon>
-          </a></li>
-          <li><a href="#">
-            <mat-icon>notifications</mat-icon>
-          </a></li>
-          <li>
-            <img src="https://www.themoviedb.org/t/p/w50_and_h50_face/x066gtDIH6yYPHBjsGvkBZg74eP.jpg" alt="avatar">
-          </li>
-        </ul>
-      </div>
-    </div>
   </div>
-
-  <app-slider (click)="modal=true" title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
-  <router-outlet *ngIf="modal"></router-outlet>
-  <app-main (click)="modal=true" [movies]="topRated" title="Top Rated"></app-main>
-  <button class="main__button" (click)="moreMovies()">
-    <mat-icon>expand_more</mat-icon>
-  </button>
-
 
   <!-- <app-search-slider *ngIf="searchRes" [movies]="searchRes" title="Search results"
                       [sliderConfig]="sliderConfig"></app-search-slider>-->

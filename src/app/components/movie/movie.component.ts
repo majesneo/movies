@@ -15,7 +15,8 @@ export class MovieComponent implements OnInit {
   // @ts-ignore
   cast: any;
 
- @Output() modal: boolean;
+ // @ts-ignore
+  @Output() modal: boolean;
 
   // @ts-ignore
   @Input() id: boolean = true;

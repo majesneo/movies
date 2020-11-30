@@ -1,6 +1,7 @@
 .container
   display: flex
   flex-direction: column
+  position: relative
 
   .header
     width: 100%
@@ -8,7 +9,6 @@
     justify-content: space-between
     align-items: center
     position: relative
-
 
 
   .header__banner
@@ -178,7 +178,28 @@ ul
   cursor: pointer
   margin: 0 auto
   display: block
+
   mat-icon
     color: white
     transform: scale(1.4)
+
+
+mat-sidenav-container
+  height: 100%
+  position: absolute
+  z-index: 9999
+
+mat-sidenav
+  background: #1d1d1d
+  width: 200px
+
+.wrap
+  margin-left: 55px
+
+
+.btn-sidenav
+  height: 100%
+  border: none
+  background-color: #0D0D0D
+
 

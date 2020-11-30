@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {Movies, ResultsEntity} from './models/movies';
 import {MovieService} from './services/movie.service';
 import {MovieComponent} from './components/movie/movie.component';
+import {MainComponent} from './components/main/main.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,10 @@ import {MovieComponent} from './components/movie/movie.component';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  constructor(private movieService: MovieService, public movieComponent: MovieComponent) {
+  constructor(private movieService: MovieService,
+              public movieComponent: MovieComponent,
+              public mainComponent: MainComponent
+  ) {
 
   }
 
@@ -20,7 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
-  trending: Movies[] = [];
+  // @ts-ignore
+  trending: Movies[];
 
   // @ts-ignore
   popular: Movies = [];
@@ -48,9 +53,18 @@ export class AppComponent implements OnInit, OnDestroy {
   searchRes: any;
   page: number = 1;
 
+  // @ts-ignore
   @Input() modal: boolean;
 
+  opened = false;
+
+  // @ts-ignore
+ favorites: Movies[];
+
   ngOnInit(): void {
+
+    // @ts-ignore
+
 
     this.subs.push(this.movieService.getLatestMovie().subscribe(data => {
       this.latestMovie = data;
@@ -90,6 +104,12 @@ export class AppComponent implements OnInit, OnDestroy {
       // @ts-ignore
       this.searchRes = res.results;
     });
+  }
+
+  addFavor() {
+    // @ts-ignore
+    this.favorites = this.mainComponent.getFavorites();
+    console.log('favoritesADDDDD',this.favorites);
   }
 
   moreMovies() {

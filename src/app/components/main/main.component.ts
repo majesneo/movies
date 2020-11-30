@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Movies} from '../../models/movies';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {Movies, ResultsEntity} from '../../models/movies';
 import {MovieService} from '../../services/movie.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class MainComponent implements OnInit {
   @Input() title: string;
   // @ts-ignore
   @Input() topRated: Movies;
-  page: number = 1;
+// @ts-ignore
+  @Input() favorites: Movies[] = [];
 
   constructor(private movieService: MovieService) {
   }
@@ -22,7 +23,24 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  moreMovies() {
-    this.movieService.getTopRated(this.page++);
+  getFavorites() {
+    return this.favorites;
+  }
+
+  addFavorites(movie: ResultsEntity) {
+    // @ts-ignore
+    this.favorites.push(movie);
+    console.log(this.favorites, 'Add');
+  }
+
+  delFavorites(movie: ResultsEntity) {
+    for (let i = 0; i < this.favorites.length; i++) {
+      // @ts-ignore
+      if (movie === this.favorites[i]) {
+        this.favorites.splice(i, 1);
+        console.log(this.favorites, 'Del');
+      }
+    }
   }
 }
+

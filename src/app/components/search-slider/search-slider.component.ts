@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {MainComponent} from '../main/main.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { Movies } from 'src/app/models/movies';
+import { MainComponent } from '../main/main.component';
 
 @Component({
   selector: 'app-search-slider',
@@ -9,12 +10,11 @@ import {MainComponent} from '../main/main.component';
 export class SearchSliderComponent implements OnInit {
 
   // @ts-ignore
-  @Input() searchRes: any;
-  @Input() title: any;
+  @Input() searchRes: Movies[] = [];
+  @Input() title: string;
   @Input() sliderConfig: any;
 
-  @Input() movies: any;
-
+  @Input() movies: string;
 
   constructor(public addFavorites: MainComponent, public delFavorites: MainComponent) {
   }

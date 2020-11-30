@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import {MovieService} from '../../services/movie.service';
-import {ActivatedRoute} from '@angular/router';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { MovieService } from '../../services/movie.service';
+import { ActivatedRoute } from '@angular/router';
+import { Movies } from 'src/app/models/movies';
 
 @Component({
   selector: 'app-movie',
@@ -8,15 +9,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./movie.component.sass']
 })
 export class MovieComponent implements OnInit {
-  // @ts-ignore
-  movie: any;
-  // @ts-ignore
-  cast: any;
 
- // @ts-ignore
+  movie: Movies;
+
+  cast: Movies[] = [];
+
+
   @Output() modal: boolean;
 
-  // @ts-ignore
+
   @Input() id: boolean = true;
 
 
@@ -33,8 +34,8 @@ export class MovieComponent implements OnInit {
 
       this.movieService.getMovie(id).subscribe(movie => {
         console.log(movie);
-        // @ts-ignore
 
+        // @ts-ignore
         this.movie = movie;
 
       });

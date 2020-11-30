@@ -1,11 +1,13 @@
 export interface Movies {
-  id: any;
-  title: any;
+
+  id: number;
+  title: string;
   poster_path: any;
   results?: ResultsEntity[] | null;
   page: number;
   total_results: number;
   dates: Dates;
+  genres: any;
   total_pages: number;
   searchRes: string;
 }

@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Movies} from '../../models/movies';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-slider',
@@ -7,11 +6,11 @@ import {Movies} from '../../models/movies';
   styleUrls: ['./slider.component.sass']
 })
 export class SliderComponent implements OnInit {
-  // @ts-ignore
+
   @Input() sliderConfig;
-  // @ts-ignore
-  @Input() movies: Movies[];
-  // @ts-ignore
+
+  @Input() movies: any;
+
   @Input() title: string;
 
 

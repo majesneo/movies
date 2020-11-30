@@ -1,3 +1,5 @@
+<!-- tslint:disable -->
+
 <div class="container">
   <mat-sidenav-container>
     <mat-sidenav mode="side" [(opened)]="opened">
@@ -88,6 +90,8 @@
 
   <app-search-slider *ngIf="searchRes" [movies]="searchRes" title="Search results"
                      [sliderConfig]="sliderConfig"></app-search-slider>
+
+
   <!--  <div class="body" style="margin-top: 30rem;">
       <app-search-slider *ngIf="searchRes" [movies]="searchRes" title="Search results"
                          [sliderConfig]="sliderConfig"></app-search-slider>
@@ -100,8 +104,7 @@
   <!--  </div>-->
 
 
-  <!--  -->
-  <!--  <app-movie *ngIf="id"></app-movie>-->
+
 
 </div>
 

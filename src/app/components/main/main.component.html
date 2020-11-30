@@ -1,12 +1,16 @@
 <h2 class="main__title">{{title}}</h2>
 <ul class="mdc-image-list my-image-list">
-  <li class="mdc-image-list__item" *ngFor="let movie of movies.results">
+  <li class="mdc-image-list__item" *ngFor="let movie of movies.results ">
     <div class="mdc-image-list__image-aspect-container">
       <a href="#" routerLink="/movie/{{movie.id}}">
         <img class="mdc-image-list__image" alt="{{movie.title}}"
-             src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}">
-        <button class="mdc-image-list__btn" (click)="addFavorites(movie)"><mat-icon>favorite</mat-icon></button>
-        <button class="mdc-image-list__btn" (click)="delFavorites(movie)"><mat-icon>favorite_border</mat-icon></button>
+          src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}">
+        <button class="mdc-image-list__btn" (click)="addFavorites(movie)">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button class="mdc-image-list__btn" (click)="delFavorites(movie)">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
       </a>
     </div>
     <div class="mdc-image-list__supporting">
@@ -14,5 +18,3 @@
     </div>
   </li>
 </ul>
-
-

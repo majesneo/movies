@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
   opened = false;
 
   // @ts-ignore
- favorites: Movies[];
+  favorites: Movies[];
 
   ngOnInit(): void {
 
@@ -103,13 +103,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
       // @ts-ignore
       this.searchRes = res.results;
+      this.searchStr = '';
     });
   }
 
   addFavor() {
     // @ts-ignore
     this.favorites = this.mainComponent.getFavorites();
-    console.log('favoritesADDDDD',this.favorites);
+    console.log('favoritesADDDDD', this.favorites);
   }
 
   moreMovies() {

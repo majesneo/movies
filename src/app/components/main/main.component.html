@@ -5,8 +5,8 @@
       <a href="#" routerLink="/movie/{{movie.id}}">
         <img class="mdc-image-list__image" alt="{{movie.title}}"
              src="https://image.tmdb.org/t/p/w200{{movie.poster_path}}">
-        <button (click)="addFavorites(movie)">Add</button>
-        <button (click)="delFavorites(movie)">Del</button>
+        <button class="mdc-image-list__btn" (click)="addFavorites(movie)"><mat-icon>favorite</mat-icon></button>
+        <button class="mdc-image-list__btn" (click)="delFavorites(movie)"><mat-icon>favorite_border</mat-icon></button>
       </a>
     </div>
     <div class="mdc-image-list__supporting">

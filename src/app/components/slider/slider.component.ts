@@ -10,7 +10,7 @@ export class SliderComponent implements OnInit {
   // @ts-ignore
   @Input() sliderConfig;
   // @ts-ignore
-  @Input() movies: Movies;
+  @Input() movies: Movies[];
   // @ts-ignore
   @Input() title: string;
 

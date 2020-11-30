@@ -23,11 +23,33 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // @ts-ignore
   getFavorites() {
-    return this.favorites;
+    if (localStorage.getItem('fov') === null) {
+      return this.favorites;
+    } else {
+      // @ts-ignore
+      this.favorites = JSON.parse(localStorage.getItem('fov'));
+      return this.favorites;
+    }
   }
 
   addFavorites(movie: ResultsEntity) {
+    // @ts-ignore
+    this.favorites.push(movie);
+    let favorites = [];
+    if (localStorage.getItem('fov') === null) {
+      favorites.push(movie);
+      // @ts-ignore
+      localStorage.setItem('fov', JSON.stringify(favorites));
+    } else {
+      // @ts-ignore
+      favorites = JSON.parse(localStorage.getItem('fov'));
+      favorites.push(movie);
+      localStorage.setItem('fov', JSON.stringify(favorites));
+    }
+
+
     // @ts-ignore
     this.favorites.push(movie);
     console.log(this.favorites, 'Add');
@@ -39,6 +61,7 @@ export class MainComponent implements OnInit {
       if (movie === this.favorites[i]) {
         this.favorites.splice(i, 1);
         console.log(this.favorites, 'Del');
+        localStorage.setItem('fov', JSON.stringify(this.favorites));
       }
     }
   }

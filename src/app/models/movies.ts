@@ -1,4 +1,6 @@
 export interface Movies {
+  title: any;
+  poster_path: any;
   results?: ResultsEntity[] | null;
   page: number;
   total_results: number;

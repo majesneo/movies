@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
 
   @Input() movies: Movies;
 
-  @Input() title: Movies[] = []
+  @Input() title: string;
 
   @Input() topRated: Movies[] = [];
 
@@ -37,6 +37,7 @@ export class MainComponent implements OnInit {
   }
 
   addFavorites(movie: Movies) {
+
     for (let i = 0; i < this.favorites.length; i++) {
       if (movie.id == this.favorites[i].id) {
         return;
@@ -66,6 +67,7 @@ export class MainComponent implements OnInit {
       console.log(movie.id == this.favorites[i].id);
 
       if (movie.id == this.favorites[i].id) {
+
         this.favorites.splice(i, 1);
         localStorage.setItem('fov', JSON.stringify(this.favorites));
       }

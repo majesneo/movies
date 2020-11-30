@@ -13,7 +13,9 @@
 
     </h2>
     <a routerLink="#" *ngFor="let genre of movie.genres" class="label label-info m-r-md">
+      /* tslint:disable */
       {{genre.name}}
+      /* tslint:enable */
     </a>
     <p>
       <a *ngIf="movie.homepage" href="{{movie.homepage}}" class="btn btn-info btn-block" target="_blank">Visit Movies
@@ -39,5 +41,3 @@
   </div>
   <mat-icon routerLink="#" (click)="modal =true">close</mat-icon>
 </div>
-
-

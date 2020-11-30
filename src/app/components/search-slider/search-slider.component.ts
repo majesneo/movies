@@ -9,12 +9,12 @@ import { MainComponent } from '../main/main.component';
 })
 export class SearchSliderComponent implements OnInit {
 
-  // @ts-ignore
+
   @Input() searchRes: Movies[] = [];
   @Input() title: string;
   @Input() sliderConfig: any;
 
-  @Input() movies: string;
+  @Input() movies: Movies[] = [];
 
   constructor(public addFavorites: MainComponent, public delFavorites: MainComponent) {
   }

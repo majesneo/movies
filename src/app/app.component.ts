@@ -1,9 +1,12 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {Movies} from './models/movies';
-import {MovieService} from './services/movie.service';
-import {MovieComponent} from './components/movie/movie.component';
-import {MainComponent} from './components/main/main.component';
+
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+
+import { Subscription } from 'rxjs';
+import { Movies } from './models/movies';
+import { MovieService } from './services/movie.service';
+import { MovieComponent } from './components/movie/movie.component';
+import { MainComponent } from './components/main/main.component';
+
 
 @Component({
   selector: 'app-root',
@@ -18,8 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
 
   }
-
-
 
 
   subs: Subscription[] = [];
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   id: boolean;
 
-  searchRes: string;
+  searchRes: '';
   page: number = 1;
 
 
@@ -58,12 +59,9 @@ export class AppComponent implements OnInit, OnDestroy {
   opened = false;
 
 
-  favorites: Movies[] = [];
+  favorites: Movies[];
 
   ngOnInit(): void {
-
-
-
 
     this.subs.push(this.movieService.getLatestMovie().subscribe(data => {
       this.latestMovie = data;
@@ -76,6 +74,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subs.push();
     this.subs.push(this.movieService.getTopRated(this.page).subscribe(data => {
 
+      // @ts-ignore
       this.topRated = data;
     }));
 
@@ -109,6 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   addFavor() {
 
+    // @ts-ignore
     this.favorites = this.mainComponent.getFavorites();
     console.log('favoritesADDDDD', this.favorites);
   }
@@ -118,12 +118,14 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log(this.page);
     this.movieService.getTopRated(this.page).subscribe(data => {
 
+      // @ts-ignore
       this.topRated = data;
     });
   }
 
   fov() {
 
+    // @ts-ignore
     this.favorites = this.mainComponent.getFavorites();
     console.log(this.favorites);
   }

@@ -119,4 +119,9 @@ export class AppComponent implements OnInit, OnDestroy {
       this.topRated = data;
     });
   }
+
+  fov() {
+    this.favorites = this.mainComponent.getFavorites();
+    console.log(this.favorites);
+  }
 }

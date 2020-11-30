@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Injectable, Input, OnInit, Output} from '@angular/core';
 import {Movies, ResultsEntity} from '../../models/movies';
 import {MovieService} from '../../services/movie.service';
 
@@ -17,10 +17,12 @@ export class MainComponent implements OnInit {
 // @ts-ignore
   @Input() favorites: Movies[] = [];
 
+
   constructor(private movieService: MovieService) {
   }
 
   ngOnInit(): void {
+
   }
 
   // @ts-ignore
